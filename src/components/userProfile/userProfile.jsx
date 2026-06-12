@@ -1,9 +1,9 @@
-import "./userProfile.css"
+import styles from "./UserProfile.module.css"
 
 export default function UserProfile(){
   return (
     <>
-      <section class="user-details">
+      <section className={styles['user-details']}>
         <ul>
           <li>First Name : John</li>
           <li>Last Name : Doe</li>
