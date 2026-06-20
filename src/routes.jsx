@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     element: <Tasks />,
   },
   {
-    path: "404",
+    path: "*",
     element: <Error404 />,
   },
 ]);
