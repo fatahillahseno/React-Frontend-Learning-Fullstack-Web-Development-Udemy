@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { Button } from "@/components/ui/button";
 
 export default function Login() {
   return (
@@ -9,7 +10,9 @@ export default function Login() {
           <Link to="tasks">Tasks</Link>
         </li>
         <li>
-          <Link to="signup">Sign Up</Link>
+          <Button asChild>
+            <Link to="signup">Sign Up</Link>
+          </Button>
         </li>
       </ul>
     </>
