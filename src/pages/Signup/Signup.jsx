@@ -6,20 +6,46 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Link } from "react-router";
+
 export default function Signup() {
   return (
     <section className="flex flex-row w-full max-w-screen-xl min-h-screen justify-center items-center">
-      <div className="h-20 w-4/12 ">
+      <div className="w-4/12 ">
         <Card>
           <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
+            <CardTitle>Sign Up</CardTitle>
+            <CardDescription>
+              Create a new account to start creating tasks
+            </CardDescription>
           </CardHeader>
+
           <CardContent>
-            <p>Card Content</p>
+            <Input
+              className="mb-4"
+              type="text"
+              placeholder="First Name"
+            ></Input>
+            <Input className="mb-4" type="text" placeholder="Last Name"></Input>
+            <Input className="mb-4" type="email" placeholder="Email"></Input>
+            <Input
+              className="mb-4"
+              type="password"
+              placeholder="Password"
+            ></Input>
           </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
+
+          <CardFooter className="flex flex-row justify-between">
+            <p>
+              Already have an account?{" "}
+              <Link to="/" className="hover:text-blue-800">
+                Login Here
+              </Link>
+            </p>
+            <Button>Sign Up</Button>
           </CardFooter>
         </Card>
       </div>
