@@ -39,9 +39,9 @@ export default function Signup() {
           </CardContent>
 
           <CardFooter className="flex flex-row justify-between">
-            <p>
+            <p className="basis-3/4">
               Already have an account?{" "}
-              <Link to="/" className="hover:text-blue-800">
+              <Link to="/" className="hover:text-blue-500">
                 Login Here
               </Link>
             </p>
