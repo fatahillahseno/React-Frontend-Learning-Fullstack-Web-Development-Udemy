@@ -9,9 +9,9 @@ export default function Tasks() {
             Tasks as on: Wednesday, 1 Jan 2025
           </h1>
           <div className="flex flex-row justify-around">
-            <TasksCounter />
-            <TasksCounter />
-            <TasksCounter />
+            <TasksCounter status="todo" count={1} />
+            <TasksCounter status="inProgress" count={4} />
+            <TasksCounter status="completed" count={2} />
           </div>
         </div>
       </section>
