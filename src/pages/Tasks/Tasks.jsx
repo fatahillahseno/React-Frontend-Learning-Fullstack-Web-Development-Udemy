@@ -9,7 +9,7 @@ export default function Tasks() {
           <h1 className="text-white font-bold text-2xl mb-8">
             Tasks as on: Wednesday, 1 Jan 2025
           </h1>
-          <div className="flex flex-row justify-around">
+          <div className="flex flex-row justify-around mb-16">
             <TasksCounter status="todo" count={1} />
             <TasksCounter status="inProgress" count={4} />
             <TasksCounter status="completed" count={2} />

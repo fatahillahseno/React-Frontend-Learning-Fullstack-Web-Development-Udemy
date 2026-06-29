@@ -1,8 +1,9 @@
+import TaskPagination from "../TaskPagination/TaskPagination.jsx";
 export default function FilterBar() {
   return (
     <>
       <nav className="flex flex-row justify-between">
-        <p>Pagination</p>
+        <TaskPagination />
         <p>Order Select</p>
       </nav>
     </>
