@@ -10,7 +10,7 @@ import {
 export default function OrderSelect() {
   return (
     <Select>
-      <SelectTrigger className="w-[140px]">
+      <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select Order" />
       </SelectTrigger>
       <SelectContent>
