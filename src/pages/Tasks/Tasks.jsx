@@ -1,3 +1,4 @@
+import FilterBar from "@/components/FilterBar/FilterBar";
 import TasksCounter from "@/components/TasksCounter/TasksCounter";
 
 export default function Tasks() {
@@ -13,6 +14,7 @@ export default function Tasks() {
             <TasksCounter status="inProgress" count={4} />
             <TasksCounter status="completed" count={2} />
           </div>
+          <FilterBar />
         </div>
       </section>
       <section className="flex basis-1/3">Create Task Section</section>
