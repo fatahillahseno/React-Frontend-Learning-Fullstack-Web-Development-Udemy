@@ -10,23 +10,21 @@ import {
 
 export default function TaskPagination() {
   return (
-    <>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious></PaginationPrevious>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink>1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink>2</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext></PaginationNext>
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </>
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious></PaginationPrevious>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink>1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink>2</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext></PaginationNext>
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   );
 }
