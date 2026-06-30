@@ -10,15 +10,22 @@ import {
 } from "@/components/ui/card";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export default function Task() {
   return (
-    <Card className="w-full mb-6">
-      <CardHeader className="flex flex-row justify-between">
-        <CardTitle className="basis-2/3">The Title of The Task</CardTitle>
-        <div className="flex flex-row basis-1/3 justify-between">
-          <p>Date</p>
-          <p>Badge</p>
+    <Card className="w-full mb-8">
+      <CardHeader className="flex flex-row justify-between items-center">
+        <CardTitle className="basis-2/3 leading-8">
+          The Title of The Task
+        </CardTitle>
+        <div>
+          <Badge className="mr-2" variant="outline">
+            1 Jan, 2026
+          </Badge>
+          <Badge className="bg-sky-800" variant="outline">
+            normal
+          </Badge>
         </div>
       </CardHeader>
       <CardContent>
