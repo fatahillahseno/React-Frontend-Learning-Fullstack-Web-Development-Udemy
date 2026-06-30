@@ -4,7 +4,6 @@ import {
   PaginationItem,
   PaginationPrevious,
   PaginationLink,
-  PaginationEllipsis,
   PaginationNext,
 } from "@/components/ui/pagination";
 
@@ -19,7 +18,7 @@ export default function TaskPagination() {
           <PaginationLink>1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink>2</PaginationLink>
+          <PaginationLink isActive>2</PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationNext></PaginationNext>

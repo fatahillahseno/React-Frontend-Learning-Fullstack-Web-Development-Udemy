@@ -4,7 +4,7 @@ import OrderSelect from "../OrderSelect/OrderSelect.jsx";
 export default function FilterBar() {
   return (
     <>
-      <nav className="flex flex-row justify-between">
+      <nav className="flex flex-row justify-between mb-8">
         <TaskPagination />
         <OrderSelect />
       </nav>

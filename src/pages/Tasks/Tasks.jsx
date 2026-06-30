@@ -1,5 +1,6 @@
-import FilterBar from "@/components/FilterBar/FilterBar";
-import TasksCounter from "@/components/TasksCounter/TasksCounter";
+import FilterBar from "@/components/FilterBar/FilterBar.jsx";
+import TasksCounter from "@/components/TasksCounter/TasksCounter.jsx";
+import Task from "@/components/Task/Task.jsx";
 
 export default function Tasks() {
   return (
@@ -16,6 +17,9 @@ export default function Tasks() {
               <TasksCounter status="completed" count={2} />
             </div>
             <FilterBar />
+            <Task />
+            <Task />
+            <Task />
           </div>
         </div>
       </section>
