@@ -11,6 +11,8 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 export default function Task() {
   return (
@@ -28,16 +30,18 @@ export default function Task() {
           </Badge>
         </div>
       </CardHeader>
+
       <CardContent>
-        <CardDescription>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-          molestiae non porro repudiandae quasi et ducimus officia saepe, fugit
-          similique, totam quisquam quia culpa pariatur deleniti. Sequi dolorum
-          ad eum.
-        </CardDescription>
+        <CardDescription>Description of The Task</CardDescription>
       </CardContent>
+
       <CardFooter className="flex flex-row justify-between">
-        <p>Switch in Progress</p>
+        <div className="flex items-center">
+          <Switch id="in-progress" />
+          <Label className="ml-4" htmlFor="in-progress">
+            In Progress
+          </Label>
+        </div>
         <Button>Completed</Button>
       </CardFooter>
     </Card>
