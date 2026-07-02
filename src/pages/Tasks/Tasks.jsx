@@ -18,8 +18,8 @@ export default function Tasks() {
             </div>
             <FilterBar />
             <Task />
-            <Task />
-            <Task />
+            <Task priority="high" status="inProgress" />
+            <Task priority="low" />
           </div>
         </div>
       </section>

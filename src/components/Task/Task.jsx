@@ -14,30 +14,58 @@ import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
-export default function Task() {
+export default function Task(props) {
+  const {
+    title = "This is the default title",
+    description = "This is the default description",
+    status = "todo",
+    priority = "normal",
+    dueDate = new Date("2026-07-02T13:38:00.000Z"),
+  } = props;
+
+  let formattedDate = dueDate.toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
   return (
     <Card className="w-full mb-8">
       <CardHeader className="flex flex-row justify-between items-center">
-        <CardTitle className="basis-2/3 leading-8">
-          The Title of The Task
-        </CardTitle>
+        <CardTitle className="basis-2/3 leading-8">{title}</CardTitle>
         <div>
           <Badge className="mr-2" variant="outline">
-            1 Jan, 2026
+            {formattedDate}
           </Badge>
-          <Badge className="bg-sky-800" variant="outline">
-            normal
-          </Badge>
+          {priority === "normal" && (
+            <Badge className="bg-sky-800" variant="outline">
+              {priority}
+            </Badge>
+          )}
+          {priority === "high" && (
+            <Badge className="bg-red-800" variant="outline">
+              {priority}
+            </Badge>
+          )}
+          {priority === "low" && (
+            <Badge className="bg-green-800" variant="outline">
+              {priority}
+            </Badge>
+          )}
         </div>
       </CardHeader>
 
       <CardContent>
-        <CardDescription>Description of The Task</CardDescription>
+        <CardDescription>{description}</CardDescription>
       </CardContent>
 
       <CardFooter className="flex flex-row justify-between">
         <div className="flex items-center">
-          <Switch id="in-progress" />
+          <Switch
+            checked={status === "inProgress" ? true : false}
+            onCheckedChange={() => console.log("Switch Changed ")}
+            id="in-progress"
+          />
           <Label className="ml-4" htmlFor="in-progress">
             In Progress
           </Label>
