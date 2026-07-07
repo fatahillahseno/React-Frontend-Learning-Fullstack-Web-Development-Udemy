@@ -1,6 +1,7 @@
 import FilterBar from "@/components/FilterBar/FilterBar.jsx";
 import TasksCounter from "@/components/TasksCounter/TasksCounter.jsx";
 import Task from "@/components/Task/Task.jsx";
+import TaskSideBar from "@/components/TaskSideBar/TaskSideBar";
 
 export default function Tasks() {
   return (
@@ -23,7 +24,9 @@ export default function Tasks() {
           </div>
         </div>
       </section>
-      <section className="flex basis-1/3">Create Task Section</section>
+      <section className="flex basis-1/3">
+        <TaskSideBar></TaskSideBar>
+      </section>
     </section>
   );
 }
