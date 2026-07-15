@@ -1,4 +1,10 @@
 .sideBarHeight {
   height: calc(100vh - 2rem);
-  min-width: 360px;
+  min-width: 480px;
+}
+
+html body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }
