@@ -7,11 +7,31 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import { SignupSchema } from "@/schema/signup.schema.js";
 
 export default function Signup() {
+  const form = useForm({
+    resolver: zodResolver(SignupSchema),
+  });
+
+  function onSubmit(values) {
+    console.log(values);
+  }
+
   return (
     <section className="flex flex-row w-full max-w-screen-xl min-h-screen justify-center items-center">
       <div className="w-4/12 ">
@@ -22,31 +42,77 @@ export default function Signup() {
               Create a new account to start creating tasks
             </CardDescription>
           </CardHeader>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormControl>
+                        <Input placeholder="First Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-          <CardContent>
-            <Input
-              className="mb-4"
-              type="text"
-              placeholder="First Name"
-            ></Input>
-            <Input className="mb-4" type="text" placeholder="Last Name"></Input>
-            <Input className="mb-4" type="email" placeholder="Email"></Input>
-            <Input
-              className="mb-4"
-              type="password"
-              placeholder="Password"
-            ></Input>
-          </CardContent>
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormControl>
+                        <Input placeholder="Last Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-          <CardFooter className="flex flex-row justify-between">
-            <p className="basis-3/4">
-              Already have an account?{" "}
-              <Link to="/" className="hover:text-blue-500">
-                Login Here
-              </Link>
-            </p>
-            <Button>Sign Up</Button>
-          </CardFooter>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormControl>
+                        <Input placeholder="Email" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="Password"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+
+              <CardFooter className="flex flex-row justify-between">
+                <p className="basis-3/4">
+                  Already have an account?{" "}
+                  <Link to="/" className="hover:text-blue-500">
+                    Login Here
+                  </Link>
+                </p>
+                <Button>Sign Up</Button>
+              </CardFooter>
+            </form>
+          </Form>
         </Card>
       </div>
     </section>
