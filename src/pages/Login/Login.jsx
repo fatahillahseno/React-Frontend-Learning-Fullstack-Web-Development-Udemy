@@ -50,7 +50,11 @@ export default function Login() {
                   render={({ field }) => (
                     <FormItem className="mb-4">
                       <FormControl>
-                        <Input placeholder="Email" {...field} />
+                        <Input
+                          placeholder="Email"
+                          {...field}
+                          value={field.value ?? ""}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -67,6 +71,7 @@ export default function Login() {
                           type="password"
                           placeholder="Password"
                           {...field}
+                          value={field.value ?? ""}
                         />
                       </FormControl>
                       <FormMessage />
