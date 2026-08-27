@@ -23,13 +23,18 @@ import { useForm } from "react-hook-form";
 
 import { SignupSchema } from "@/schema/signup.schema.js";
 
+import { useSignup } from "@/hooks/useSignup.hook.js";
+
 export default function Signup() {
+  const { mutate, isLoading, isError, isSuccess } = useSignup();
+
   const form = useForm({
     resolver: zodResolver(SignupSchema),
   });
 
   function onSubmit(values) {
-    console.log(values);
+    mutate(values);
+    form.reset();
   }
 
   return (
