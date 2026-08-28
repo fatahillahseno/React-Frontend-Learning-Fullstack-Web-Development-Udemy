@@ -20,17 +20,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import { LoginSchema } from "@/schema/login.schema.js";
+import { useLogin } from "@/hooks/useLogin.hook.js";
+import { useEffect } from "react";
 
 export default function Login() {
+  const { mutate, isError, isSuccess } = useLogin();
+
   const form = useForm({
     resolver: zodResolver(LoginSchema),
   });
 
   function onSubmit(values) {
-    console.log(values);
+    mutate(values);
+    form.reset();
   }
+
+  useEffect(() => {
+    console.log(isSuccess);
+  }, [isSuccess]);
+
+  // useEffect(() => {
+  //   if (isError) {
+  //   }
+  // }, [isError]);
 
   return (
     <section className="flex flex-row w-full max-w-screen-xl min-h-screen justify-center items-center">
