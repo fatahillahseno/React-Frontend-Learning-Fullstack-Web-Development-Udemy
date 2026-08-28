@@ -22,10 +22,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { LoginSchema } from "@/schema/login.schema.js";
 import { useLogin } from "@/hooks/useLogin.hook.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { Toaster } from "@/components/ui/toaster.jsx";
+import { useToast } from "@/hooks/use-toast.js";
 
 export default function Login() {
   const { mutate, isError, isSuccess } = useLogin();
+  const [login, setLogin] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
@@ -37,13 +43,27 @@ export default function Login() {
   }
 
   useEffect(() => {
-    console.log(isSuccess);
+    if (isSuccess) {
+      setLogin(true);
+    }
   }, [isSuccess]);
 
-  // useEffect(() => {
-  //   if (isError) {
-  //   }
-  // }, [isError]);
+  useEffect(() => {
+    if (login) {
+      // redirect
+      navigate("/tasks");
+    }
+  }, [login]);
+
+  useEffect(() => {
+    if (isError) {
+      toast({
+        ttile: "Uh Ho! Your Request Failed",
+        description: "Please check your login details",
+        variant: "destructive",
+      });
+    }
+  }, [isError]);
 
   return (
     <section className="flex flex-row w-full max-w-screen-xl min-h-screen justify-center items-center">
@@ -106,6 +126,7 @@ export default function Login() {
           </Form>
         </Card>
       </div>
+      <Toaster />
     </section>
   );
 }
