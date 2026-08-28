@@ -20,13 +20,24 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import { SignupSchema } from "@/schema/signup.schema.js";
-
 import { useSignup } from "@/hooks/useSignup.hook.js";
+import { Toaster } from "@/components/ui/toaster.jsx";
+import { useToast } from "@/hooks/use-toast.js";
+import { useEffect } from "react";
+
+function LoginRedirect() {
+  return (
+    <Button variant="secondary" asChild>
+      <Link to="/">Login Here</Link>
+    </Button>
+  );
+}
 
 export default function Signup() {
   const { mutate, isLoading, isError, isSuccess } = useSignup();
+
+  const { toast } = useToast();
 
   const form = useForm({
     resolver: zodResolver(SignupSchema),
@@ -36,6 +47,28 @@ export default function Signup() {
     mutate(values);
     form.reset();
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      // load toast
+      toast({
+        title: "User Created Successfully",
+        description: "You can now login and start creating tasks",
+        action: <LoginRedirect />,
+      });
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      // load toast
+      toast({
+        title: "Uh Ho! Your Request Failed",
+        description: "Possibly the user already exists",
+        variant: "destructive",
+      });
+    }
+  }, [isError]);
 
   return (
     <section className="flex flex-row w-full max-w-screen-xl min-h-screen justify-center items-center">
@@ -133,6 +166,7 @@ export default function Signup() {
           </Form>
         </Card>
       </div>
+      <Toaster />
     </section>
   );
 }
