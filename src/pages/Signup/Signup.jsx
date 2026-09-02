@@ -35,7 +35,7 @@ function LoginRedirect() {
 }
 
 export default function Signup() {
-  const { mutate, isLoading, isError, isSuccess } = useSignup();
+  const { mutate, isPending, isError, isSuccess } = useSignup();
 
   const { toast } = useToast();
 

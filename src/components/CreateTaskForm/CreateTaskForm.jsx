@@ -30,22 +30,46 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { CreateTaskSchema } from "@/schema/createTask.schema.js";
-
 import { Textarea } from "@/components/ui/textarea";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useCreateTask } from "@/hooks/useCreateTask.hook.js";
+import { useToast } from "@/hooks/use-toast.js";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function CreateTaskForm() {
   const [date, setDate] = useState();
+  const { mutate, isPending, isSuccess, isError } = useCreateTask();
+  const { toast } = useToast();
 
   const form = useForm({
     resolver: zodResolver(CreateTaskSchema),
   });
 
   function onSubmit(values) {
-    let dueDate = JSON.stringify(values.dueDate);
-    console.log(values);
+    let dueDate = values.dueDate.toISOString();
+    mutate({ ...values, dueDate });
+    form.reset();
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      // load toast
+      toast({
+        title: "New Task Created Successfully",
+      });
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      // load toast
+      toast({
+        title: "Uh Ho! Your Request Failed",
+        description: "Please try again",
+        variant: "destructive",
+      });
+    }
+  }, [isError]);
 
   return (
     <div>
@@ -194,6 +218,7 @@ export default function CreateTaskForm() {
           </div>
         </form>
       </Form>
+      <Toaster />
     </div>
   );
 }
