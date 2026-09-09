@@ -23,13 +23,13 @@ export default function Tasks() {
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
 
-  const { tasksData, isError, isSuccess, isPending, error } = useFetchTasks({
+  const { data, isError, isSuccess, isPending, error } = useFetchTasks({
     order,
     limit,
     page,
   });
 
-  console.log(tasksData);
+  console.log(data);
 
   return (
     <section className="flex flex-row w-full p-4 gap-8">
@@ -45,13 +45,13 @@ export default function Tasks() {
               <TasksCounter status="completed" count={2} />
             </div>
             <FilterBar />
-            {!tasksData &&
+            {!data &&
               [...Array(limit)].map((_entry, index) => (
                 <DisplaySkeleton key={`${index}skel`} />
               ))}
 
-            {tasksData &&
-              tasksData.data.map((task) => (
+            {data &&
+              data.data.map((task) => (
                 <Task
                   key={task["_id"]}
                   title={task.title}
