@@ -21,6 +21,7 @@ export default function Task(props) {
     status = "todo",
     priority = "normal",
     dueDate = new Date("2026-07-02T13:38:00.000Z"),
+    id,
   } = props;
 
   let formattedDate = dueDate.toLocaleDateString("id-ID", {
