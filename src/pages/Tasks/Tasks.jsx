@@ -3,8 +3,9 @@ import TasksCounter from "@/components/TasksCounter/TasksCounter.jsx";
 import Task from "@/components/Task/Task.jsx";
 import TaskSideBar from "@/components/TaskSideBar/TaskSideBar";
 import { useFetchTasks } from "@/hooks/useFetchTasks.hook.js";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { TasksContext } from "@/context/Tasks.context.jsx";
 
 function DisplaySkeleton() {
   return (
@@ -22,6 +23,7 @@ export default function Tasks() {
   const [order, setOrder] = useState("asc");
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
+  const { tasks, setTasks } = useContext(TasksContext);
 
   const { data, isError, isSuccess, isPending, error } = useFetchTasks({
     order,
@@ -29,8 +31,11 @@ export default function Tasks() {
     page,
   });
 
-  console.log(data);
-
+  useEffect(() => {
+    if (data) {
+      setTasks(data);
+    }
+  }, [data]);
   return (
     <section className="flex flex-row w-full p-4 gap-8">
       <section className="flex basis-2/3 justify-center">

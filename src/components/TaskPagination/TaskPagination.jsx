@@ -6,8 +6,12 @@ import {
   PaginationLink,
   PaginationNext,
 } from "@/components/ui/pagination";
+import { useContext } from "react";
+import { TasksContext } from "@/context/Tasks.context.jsx";
 
 export default function TaskPagination() {
+  const { tasks, setTasks } = useContext(TasksContext);
+  console.log("From Pagination Component", tasks);
   return (
     <Pagination>
       <PaginationContent>
