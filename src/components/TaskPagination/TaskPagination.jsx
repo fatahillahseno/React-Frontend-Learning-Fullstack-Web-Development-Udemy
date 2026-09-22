@@ -11,7 +11,6 @@ import { TasksContext } from "@/context/Tasks.context.jsx";
 
 export default function TaskPagination() {
   const { tasks, setTasks } = useContext(TasksContext);
-  console.log("From Pagination Component", tasks);
   return (
     <Pagination>
       <PaginationContent>

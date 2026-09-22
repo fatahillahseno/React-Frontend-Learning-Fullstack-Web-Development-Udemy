@@ -34,8 +34,8 @@ export default function Task(props) {
     <Card className="w-full mb-8">
       <CardHeader className="flex flex-row justify-between items-center">
         <CardTitle className="basis-2/3 leading-8">{title}</CardTitle>
-        <div>
-          <Badge className="mr-2" variant="outline">
+        <div className="flex flex-row mx-auto">
+          <Badge className="mr-2 w-max" variant="outline">
             {formattedDate}
           </Badge>
           {priority === "normal" && (
